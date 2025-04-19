@@ -1,0 +1,721 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hugs Across Twitter (@hugforiu) - Spread Love, One Hug at a Time</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* --- Global Settings & Variables --- */
+        :root {
+            --font-primary: 'Nunito', sans-serif;
+            --nav-height: 60px; /* Navigation height */
+
+            /* Soft Pastel Gradients */
+            --gradient-hero: linear-gradient(135deg, #f8d7da 0%, #fce3e6 100%);
+            --gradient-support: linear-gradient(135deg, #e2d8f9 0%, #d8e1f9 100%);
+            --gradient-subtle: linear-gradient(135deg, #f0f9ff 0%, #e6fffa 100%);
+
+            /* Vibrant Accent Colors */
+            --accent-coral: #FF7F50;
+            --accent-yellow: #FFDA63;
+            --accent-hover: #FF6347;
+
+            /* Text & Background */
+            --text-color: #555;
+            --heading-color: #333;
+            --bg-color: #ffffff;
+            --card-bg: #ffffff;
+            --footer-bg: #f8f9fa;
+            --nav-bg: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+            --nav-link-color: #555;
+            --nav-link-hover: var(--accent-coral);
+
+            /* UI Elements */
+            --border-radius: 15px;
+            --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            --button-shadow: 0 4px 10px rgba(255, 127, 80, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--nav-height);
+        }
+
+        body {
+            font-family: var(--font-primary);
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.7;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation Menu --- */
+        .main-nav {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-nav li { margin: 0 10px; }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--nav-link-color);
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 5px 10px;
+            border-radius: 8px;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .main-nav a:hover, .main-nav a:focus {
+            color: var(--nav-link-hover);
+            background-color: rgba(255, 127, 80, 0.1);
+        }
+
+        /* --- Utility Classes --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section { padding: 60px 0; }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--heading-color);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .text-center { text-align: center; }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-coral);
+            border-radius: 2px;
+            margin: 15px auto 0;
+        }
+        .section-title:not(.text-center)::after { margin: 15px 0 0; }
+
+        /* --- Buttons --- */
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-coral);
+            color: white;
+            padding: 15px 35px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--button-shadow);
+            border: none;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+
+        .cta-button:hover, .cta-button:focus {
+            background: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 99, 71, 0.4);
+        }
+
+        .cta-button i { margin-right: 8px; }
+
+        .kofi-button {
+            background-color: #13C3FF;
+            box-shadow: 0 4px 10px rgba(19, 195, 255, 0.3);
+        }
+        .kofi-button:hover, .kofi-button:focus {
+            background-color: #00A4D6;
+            box-shadow: 0 6px 15px rgba(19, 195, 255, 0.4);
+        }
+
+        .patreon-button {
+            background-color: #f96854;
+            box-shadow: 0 4px 10px rgba(249, 104, 84, 0.3);
+        }
+        .patreon-button:hover, .patreon-button:focus {
+            background-color: #e44a36;
+             box-shadow: 0 6px 15px rgba(249, 104, 84, 0.4);
+        }
+
+       /* --- Hero Section (1) - Reduced Size, No CTA/Illustration --- */
+        .hero-section {
+            background: var(--gradient-hero);
+            /* Further reduced vertical padding */
+            padding: 30px 0 40px 0; /* Adjusted top and bottom padding */
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-section .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 700px; /* Even narrower content area */
+            margin-bottom: 15px; /* Less bottom margin */
+        }
+
+        .hero-headline {
+            /* Further reduced headline size */
+            font-size: 2.2rem; /* Smaller font size */
+            font-weight: 900;
+            line-height: 1.2;
+            color: var(--heading-color);
+            margin-bottom: 10px; /* Less bottom margin */
+        }
+
+        .hero-subheadline {
+            font-size: 1rem; /* Slightly smaller subheadline */
+            margin-bottom: 15px; /* Less bottom margin */
+            color: #444;
+        }
+
+
+        /* Remove hero cta and illustration */
+        /* .hero-cta {
+            padding: 12px 30px;
+            font-size: 1rem;
+        } */
+
+        /* .hero-illustration {
+           margin-top: 10px;
+        } */
+
+        .hero-icon-placeholder {
+            font-size: 3rem; /* Adjust size */
+            color: var(--accent-coral);
+            opacity: 0.8;
+            animation: heartbeat 1.8s infinite ease-in-out;
+        }
+
+        /* Keyframes for heartbeat animation */
+        @keyframes heartbeat {
+          0% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.2);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+
+        /* --- Responsiveness for Hero (adjust as needed) --- */
+        @media (max-width: 992px) {
+            .hero-headline {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 30px 0 40px 0;
+            }
+
+            /* Adjust mobile hero padding */
+            .hero-headline {
+                font-size: 1.7rem;
+            }
+
+            .hero-subheadline {
+                font-size: 0.9rem;
+            }
+
+            .hero-icon-placeholder {
+                font-size: 3.5rem;
+            }
+
+            /* .hero-cta {
+                padding: 10px 25px;
+                font-size: 0.95rem;
+            } */
+        }
+
+        @media (max-width: 576px) {
+            .hero-headline {
+                font-size: 1.5rem;
+            }
+            /* Even smaller on very small screens */
+        }
+
+        /* --- How It Works Section (2) --- */
+        .steps-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: stretch;
+            gap: 25px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .step-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+            width: calc(33.333% - 20px); /* Back to 3 cards */
+            min-width: 240px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+        .step-icon {
+            font-size: 2.2rem;
+            color: var(--accent-coral);
+            margin-bottom: 15px;
+             background: linear-gradient(135deg, #fff1eb 0%, #ffe6e0 100%);
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+        }
+        .step-card p { font-size: 1rem; color: var(--text-color); flex-grow: 1; }
+
+        /* --- Why Hugs Matter Section (3) --- */
+        #why-hugs-matter { background: var(--gradient-subtle); }
+
+        .reasons-container {
+            display: flex;
+            /* Revert to space-around for 3 cards */
+            justify-content: space-around;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .reason-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+            /* Revert width for 3 cards */
+            width: calc(33.333% - 20px);
+            min-width: 250px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+             display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .reason-card:hover {
+             transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+        .reason-icon {
+            font-size: 1.8rem;
+            color: var(--accent-yellow);
+            margin-bottom: 15px;
+             background: linear-gradient(135deg, #fffadf 0%, #fff6c8 100%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+        }
+        .reason-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            margin-bottom: 10px;
+        }
+        .reason-card p { flex-grow: 1; }
+
+        /* --- Support Section (4) --- */
+        .support-section { background: var(--gradient-support); }
+        .support-appeal {
+            max-width: 650px;
+            margin: 0 auto 30px auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .support-buttons { margin-bottom: 30px; }
+        .support-note {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #444;
+            margin-top: 20px;
+        }
+
+        /* --- About Me Section (5) --- */
+        /* Removed avatar, centering the text container */
+        .about-container {
+            display: flex;
+            justify-content: center; /* Center the text block */
+            text-align: center; /* Center text inside */
+        }
+        .about-text {
+            flex-grow: 0; /* Don't grow */
+            max-width: 700px; /* Limit width */
+        }
+        /* Center the title and its underline */
+        .about-text .section-title { text-align: center; }
+        .about-text .section-title::after { margin: 15px auto 0; }
+
+        .about-text p {
+            font-size: 1.05rem;
+            margin-bottom: 1em; /* Space between paragraphs */
+            line-height: 1.8;
+        }
+         .about-text p:last-child {
+            margin-bottom: 0; /* No margin after the last paragraph */
+         }
+
+        /* --- FAQ Section (6) --- */
+        .faq-section { background-color: #fdfdff; }
+        .faq-accordion { max-width: 750px; margin: 0 auto; }
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: calc(var(--border-radius) / 1.5);
+            margin-bottom: 15px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid #eee;
+            overflow: hidden;
+        }
+        .faq-item summary {
+            padding: 20px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--heading-color);
+            cursor: pointer;
+            position: relative;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s ease;
+        }
+        .faq-item summary:hover { background-color: #f8f8f8; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 0.9rem;
+            color: var(--accent-coral);
+            transition: transform 0.3s ease;
+        }
+        .faq-item[open] summary::after { transform: rotate(180deg); }
+        .faq-item p {
+            padding: 0 20px 20px 20px;
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* --- Footer (7) --- */
+        .footer {
+            background-color: var(--footer-bg);
+            padding: 40px 0;
+            border-top: 1px solid #e9ecef;
+        }
+        .social-icons a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            margin: 0 12px;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover { color: var(--accent-coral); }
+        .social-icons a[title="Twitter"]:hover { color: #1DA1F2; }
+        .social-icons a[title="Ko-fi"]:hover { color: #13C3FF; }
+        .social-icons a[title="Patreon"]:hover { color: #f96854; }
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        .footer-heart { color: var(--accent-coral); font-size: 0.8em; }
+
+        /* --- Responsiveness --- */
+        @media (max-width: 992px) {
+            .hero-headline { font-size: 2.6rem; } /* Adjust for smaller hero */
+            .section-title { font-size: 2.2rem; }
+             /* Revert step/reason cards to 2 per row */
+             .step-card, .reason-card {
+                 width: calc(50% - 15px);
+                 max-width: 380px;
+             }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav ul { justify-content: space-around; }
+            .main-nav li { margin: 0 5px; }
+            .main-nav a { font-size: 0.9rem; padding: 5px; }
+
+            .section { padding: 50px 0; }
+            .hero-section { padding: 50px 0 60px 0; } /* Further adjust hero padding */
+            .hero-headline { font-size: 2.2rem; }
+            .hero-subheadline { font-size: 1.1rem; }
+            .section-title { font-size: 2rem; }
+
+            .hero-icon-placeholder { font-size: 4.5rem; }
+
+            .cta-button { padding: 12px 28px; font-size: 1rem; }
+            .hero-cta { padding: 14px 30px; font-size: 1.05rem; }
+
+             .support-buttons { display: flex; flex-direction: column; align-items: center; }
+            .support-buttons .cta-button { width: 80%; max-width: 300px; margin: 8px 0; }
+
+            /* Stack step/reason cards on mobile */
+            .step-card, .reason-card {
+                 width: 90%;
+                 max-width: 350px;
+            }
+
+            .faq-item summary { font-size: 1rem; padding: 15px; }
+            .faq-item p { padding: 0 15px 15px 15px; font-size: 0.95rem;}
+
+            .about-text { max-width: 90%; } /* Ensure text doesn't touch edges */
+        }
+
+        @media (max-width: 576px) {
+            html { scroll-padding-top: calc(var(--nav-height) + 10px); }
+            .main-nav { height: auto; min-height: var(--nav-height); padding: 10px; }
+
+            body { font-size: 15px; }
+            .hero-headline { font-size: 1.9rem; } /* Further reduce */
+            .hero-subheadline { font-size: 1rem; }
+            .section-title { font-size: 1.8rem; }
+            .container { padding: 0 15px; }
+
+            .step-card, .reason-card {
+                padding: 20px;
+                 width: 100%; /* Full width when stacked */
+            }
+            .step-icon, .reason-icon { width: 55px; height: 55px; font-size: 1.8rem; }
+        }
+    </style>
+
+</head>
+<body>
+
+    <header class="main-nav">
+        <nav>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#how-it-works">Send a hug</a></li>
+                <li><a href="#support">Support Us</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero" class="section hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-headline">Spread Love with Endless Virtual Hugs! <i class="fas fa-heartbeat hero-icon-placeholder"></i></h1>
+                <p class="hero-subheadline">Send virtual hugs to your favorite people on Twitter—because everyone deserves a little kindness!</p>
+                <a href="https://forms.gle/teyegkyzfnahVxiY7" target="_blank" class="cta-button hero-cta">Send a Hug Now ➔</a>
+            </div>
+           
+        </div>
+    </section>
+
+    <section id="how-it-works" class="section">
+        <div class="container text-center">
+            <h2 class="section-title">How to Send a Hug in 3 Easy Steps</h2>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-icon"><i class="fas fa-list-alt"></i></div>
+                    <p>Submit the @username of the people you want to hug in the form below.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon"><i class="fas fa-clock"></i></div>
+                    <p>I’ll schedule a sweet hug tweet for them.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon"><i class="fas fa-smile-beam"></i></div>
+                    <p>Watch as your kindness makes someone's day better—it's that simple and powerful!</p>
+                </div>
+            </div>
+            <a href="https://forms.gle/teyegkyzfnahVxiY7" target="_blank" class="cta-button">Submit a Hug</a>
+        </div>
+    </section>
+
+    <section id="why-hugs-matter" class="section">
+        <div class="container">
+            <h2 class="section-title text-center">Why Sending Hugs Makes a Difference</h2>
+            <div class="reasons-container">
+                <div class="reason-card">
+                    <div class="reason-icon"><i class="fas fa-heart"></i></div>
+                    <h3>Small Acts, Big Impact</h3>
+                    <p>Small acts of kindness can completely turn around someone's day when they need it most.</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon"><i class="fas fa-comment-smile"></i></div>
+                    <h3>A Simple Reminder</h3>
+                    <p>A simple tweet can remind people they’re seen, valued, and loved.</p>
+                </div>
+                 <div class="reason-card">
+                    <div class="reason-icon"><i class="fas fa-link"></i></div>
+                    <h3>Real Connections</h3>
+                    <p>Virtual hugs create real connections in our increasingly digital world.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="support" class="section support-section">
+        <div class="container text-center">
+            <h2 class="section-title">Keep the Hugs Going!</h2>
+            <p class="support-appeal">Sending hugs takes time, effort, and love. If this project brightened your day or someone you know , please consider supporting me so I can continue spreading joy across Twitter.</p>
+            <div class="support-buttons">
+                <a href="https://ko-fi.com/littledino1" target="_blank" class="cta-button kofi-button">
+                    <i class="fas fa-mug-hot"></i> Buy Me a Coffee ☕
+                </a>
+                <a href="https://www.patreon.com/posts/support-hugfairy-122841896" target="_blank" class="cta-button patreon-button">
+                    <i class="fab fa-patreon"></i> Support monthly on patreon ❤️
+                </a>
+            </div>
+            <p class="support-note">Thank you for being a part of this community of love and compassion!</p>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container about-container">
+            <div class="about-text">
+                <h2 class="section-title">About @hugforiu</h2>
+                <p>I started this little project because virtual hugs helped me through some tough times, and I wanted to share that simple kindness. Now, I get to send hundreds of hug tweets daily, hoping to brighten someone's corner of the internet.</p>
+                <p>A simple hug, even a virtual one, can be a reminder that someone cares, that someone sees you, that you're not alone. That's what I hope these virtual hugs can be. A little spark of warmth in someone's day.</p>
+                <p>Thanks for being here!</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section faq-section">
+        <div class="container">
+            <h2 class="section-title text-center">Quick Questions (FAQ)</h2>
+            <div class="faq-accordion">
+                <details class="faq-item">
+                    <summary>How long does it take for a hug to be sent?</summary>
+                    <p>I try my best to schedule hugs within 1–2 days of receiving the request! Sometimes it might be a bit quicker or slightly longer depending on volume.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Can I send a hug anonymously?</summary>
+                    <p>Absolutely! The identity of the sender stays anonymous , unless the sender want to reveal it themselves.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Is there a limit to how many hugs I can request?</summary>
+                    <p>There's absolutely no limit. Send as much hugs as you want :D</p>
+                </details>
+                 <details class="faq-item">
+                    <summary>What if the Twitter handle is wrong?</summary>
+                    <p>I double-check handles, but mistakes happen! If a hug doesn't seem to go through or targets the wrong account, feel free to DM @hugforiu on Twitter.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer" class="footer">
+        <div class="container text-center">
+            <div class="social-icons">
+                <a href="https://twitter.com/hugforiu" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://ko-fi.com/littledino1" target="_blank" title="Ko-fi"><i class="fas fa-mug-hot"></i></a>
+                <a href="https://www.patreon.com/posts/support-hugfairy-122841896" target="_blank" title="Patreon"><i class="fab fa-patreon"></i></a>
+            </div>
+            <p class="copyright">© 2025 @hugforiu | Made with love (and hugs!) <i class="fas fa-heart footer-heart"></i></p>
+            <p style="font-size: 0.8em; color: #999; margin-top: 5px;">Current IST: Saturday, April 19, 2025 at 9:20:51 PM IST</p>
+
+        </div>
+    </footer>
+
+    <script>
+        // script.js - Example for animating FAQ if NOT using <details>/<summary>
+        // NOTE: This script targets classes like '.faq-item-js'.
+        // The current HTML uses <details>/<summary> which provides native
+        // accordion behavior. This script won't affect the current FAQ unless
+        // you change the HTML structure of the FAQ section accordingly.
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqItems = document.querySelectorAll('.faq-item-js'); // Use a specific class if using JS
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question-js');
+                const answer = item.querySelector('.faq-answer-js');
+
+                if (question && answer) {
+                    answer.style.maxHeight = 0;
+                    answer.style.overflow = 'hidden';
+                    answer.style.transition = 'max-height 0.4s ease-out, padding 0.4s ease-out';
+                    answer.style.paddingTop = 0;
+                    answer.style.paddingBottom = 0;
+
+                    question.addEventListener('click', () => {
+                        const currentlyOpen = item.classList.contains('active');
+
+                        if (currentlyOpen) {
+                            item.classList.remove('active');
+                            answer.style.maxHeight = 0;
+                            answer.style.paddingTop = 0;
+                            answer.style.paddingBottom = 0;
+                        } else {
+                            item.classList.add('active');
+                            answer.style.paddingTop = '20px';
+                            answer.style.paddingBottom = '20px';
+                            answer.style.maxHeight = answer.scrollHeight + 40 + 'px';
+
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
