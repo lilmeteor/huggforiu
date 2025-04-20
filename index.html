@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -126,6 +126,7 @@
 
         .text-center { text-align: center; }
 
+        /* Modified this section to fix the alignment issue */
         .section-title::after {
             content: '';
             display: block;
@@ -133,9 +134,14 @@
             height: 4px;
             background: var(--accent-coral);
             border-radius: 2px;
+            margin: 15px 0 0;
+        }
+        
+        /* Ensure centered titles have centered underlines */
+        .text-center.section-title::after,
+        .section-title.text-center::after {
             margin: 15px auto 0;
         }
-        .section-title:not(.text-center)::after { margin: 15px 0 0; }
 
         /* --- Buttons --- */
         .cta-button {
@@ -569,7 +575,7 @@
 
     <section id="how-it-works" class="section">
         <div class="container text-center">
-            <h2 class="section-title">How to Send a Hug in 3 Easy Steps</h2>
+            <h2 class="section-title text-center">How to Send a Hug in 3 Easy Steps</h2>
             <div class="steps-container">
                 <div class="step-card">
                     <div class="step-icon"><i class="fas fa-list-alt"></i></div>
@@ -577,7 +583,7 @@
                 </div>
                 <div class="step-card">
                     <div class="step-icon"><i class="fas fa-clock"></i></div>
-                    <p>I’ll schedule a sweet hug tweet for them.</p>
+                    <p>I'll schedule a sweet hug tweet for them.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-icon"><i class="fas fa-smile-beam"></i></div>
@@ -600,7 +606,7 @@
                 <div class="reason-card">
                     <div class="reason-icon"><i class="fas fa-comment-smile"></i></div>
                     <h3>A Simple Reminder</h3>
-                    <p>A simple tweet can remind people they’re seen, valued, and loved.</p>
+                    <p>A simple tweet can remind people they're seen, valued, and loved.</p>
                 </div>
                  <div class="reason-card">
                     <div class="reason-icon"><i class="fas fa-link"></i></div>
@@ -613,7 +619,7 @@
 
     <section id="support" class="section support-section">
         <div class="container text-center">
-            <h2 class="section-title">Keep the Hugs Going!</h2>
+            <h2 class="section-title text-center">Keep the Hugs Going!</h2>
             <p class="support-appeal">Sending hugs takes time, effort, and love. If this project brightened your day or someone you know , please consider supporting me so I can continue spreading joy across Twitter.</p>
             <div class="support-buttons">
                 <a href="https://ko-fi.com/littledino1" target="_blank" class="cta-button kofi-button">
